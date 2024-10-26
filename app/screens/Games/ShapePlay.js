@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View, Image, Alert } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 
 const shapes = [
-  { name: 'circle', image: require('../assets/shapes/circle.png') },
-  { name: 'diamond', image: require('../assets/shapes/diamond.png') },
-  { name: 'heptagon', image: require('../assets/shapes/heptagon.png') },
-  { name: 'octagon', image: require('../assets/shapes/octagon.png') },
-  { name: 'pentagon', image: require('../assets/shapes/pentagon.png') },
-  { name: 'rectangle', image: require('../assets/shapes/rectangle.png') },
-  { name: 'square', image: require('../assets/shapes/square.png') },
-  { name: 'star', image: require('../assets/shapes/star.png') },
-  { name: 'triangle', image: require('../assets/shapes/triangle.png') },
+  { name: 'circle', image: require('../../assets/shapes/circle.png') },
+  { name: 'diamond', image: require('../../assets/shapes/diamond.png') },
+  { name: 'heptagon', image: require('../../assets/shapes/heptagon.png') },
+  { name: 'octagon', image: require('../../assets/shapes/octagon.png') },
+  { name: 'pentagon', image: require('../../assets/shapes/pentagon.png') },
+  { name: 'rectangle', image: require('../../assets/shapes/rectangle.png') },
+  { name: 'square', image: require('../../assets/shapes/square.png') },
+  { name: 'star', image: require('../../assets/shapes/star.png') },
+  { name: 'triangle', image: require('../../assets/shapes/triangle.png') },
 ];
 
 const ShapePlay = () => {
@@ -23,31 +23,40 @@ const ShapePlay = () => {
   const [timeRemaining, setTimeRemaining] = useState(30);
   const [isGameOver, setIsGameOver] = useState(false);
   const [selectedChoice, setSelectedChoice] = useState(null);
+  const timer = useRef(null); // Use ref for the timer
 
   useEffect(() => {
     generateQuestion();
-    const timer = setInterval(() => {
+    startTimer();
+    return () => clearInterval(timer.current); // Clear timer on unmount
+  }, []);
+
+  useEffect(() => {
+    if (isGameOver) {
+      showScoreAlert();
+    }
+  }, [isGameOver]); // Trigger alert only when game ends
+
+  const startTimer = () => {
+    timer.current = setInterval(() => {
       setTimeRemaining(prev => {
         if (prev <= 1) {
-          clearInterval(timer);
-          setIsGameOver(true);
-          showScoreAlert();
+          clearInterval(timer.current);
+          setIsGameOver(true); // Set game over and end timer
           return 0;
         }
         return prev - 1;
       });
     }, 1000);
-    return () => clearInterval(timer);
-  }, []);
+  };
 
   const generateQuestion = () => {
     const randomShape = shapes[Math.floor(Math.random() * shapes.length)];
     setCurrentShape(randomShape);
-
+    
     let allChoices = shapes.map(shape => shape.name).filter(name => name !== randomShape.name);
     allChoices = [randomShape.name, allChoices[Math.floor(Math.random() * allChoices.length)]];
     const shuffledChoices = allChoices.sort(() => Math.random() - 0.5);
-
     setChoices(shuffledChoices);
     setSelectedChoice(null);
   };
@@ -56,7 +65,7 @@ const ShapePlay = () => {
     if (!isGameOver) {
       setSelectedChoice(choice);
       if (choice === currentShape.name) {
-        setScore(score + 1);
+        setScore(prevScore => prevScore + 1); // Use functional state update
       }
       setTimeout(() => {
         generateQuestion();
@@ -65,7 +74,24 @@ const ShapePlay = () => {
   };
 
   const showScoreAlert = () => {
-    Alert.alert("Time's up!", `Your final score is: ${score}`, [{ text: "OK" }]);
+    setTimeout(() => {
+      Alert.alert(
+        "Time's up!",
+        `Your final score is: ${score}`,
+        [
+          { text: "Try Again", onPress: restartGame },
+          { text: "Exit", onPress: () => navigation.goBack() }
+        ]
+      );
+    }, 100);
+  };
+
+  const restartGame = () => {
+    setScore(0);
+    setTimeRemaining(30);
+    setIsGameOver(false);
+    generateQuestion();
+    startTimer(); // Restart the timer
   };
 
   return (

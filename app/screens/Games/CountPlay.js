@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View, Image, Alert } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useNavigation } from '@react-navigation/native';
 
 const shapes = [
-  { name: 'circle', image: require('../assets/shapes/circle.png') },
-  { name: 'diamond', image: require('../assets/shapes/diamond.png') },
-  { name: 'heptagon', image: require('../assets/shapes/heptagon.png') },
-  { name: 'octagon', image: require('../assets/shapes/octagon.png') },
-  { name: 'pentagon', image: require('../assets/shapes/pentagon.png') },
-  { name: 'rectangle', image: require('../assets/shapes/rectangle.png') },
-  { name: 'square', image: require('../assets/shapes/square.png') },
-  { name: 'star', image: require('../assets/shapes/star.png') },
-  { name: 'triangle', image: require('../assets/shapes/triangle.png') },
+  { name: 'circle', image: require('../../assets/shapes/circle.png') },
+  { name: 'diamond', image: require('../../assets/shapes/diamond.png') },
+  { name: 'heptagon', image: require('../../assets/shapes/heptagon.png') },
+  { name: 'octagon', image: require('../../assets/shapes/octagon.png') },
+  { name: 'pentagon', image: require('../../assets/shapes/pentagon.png') },
+  { name: 'rectangle', image: require('../../assets/shapes/rectangle.png') },
+  { name: 'square', image: require('../../assets/shapes/square.png') },
+  { name: 'star', image: require('../../assets/shapes/star.png') },
+  { name: 'triangle', image: require('../../assets/shapes/triangle.png') },
 ];
 
 const getRandomShapes = (num) => {
@@ -24,6 +25,7 @@ const getRandomShapes = (num) => {
 };
 
 const CountPlay = () => {
+  const navigation = useNavigation();
   const [randomShapes, setRandomShapes] = useState([]);
   const [targetShape, setTargetShape] = useState(null);
   const [choices, setChoices] = useState([]);
@@ -32,34 +34,49 @@ const CountPlay = () => {
   const [isGameOver, setIsGameOver] = useState(false);
   const [selectedChoice, setSelectedChoice] = useState(null);
   const [isCorrect, setIsCorrect] = useState(null);
+  const timer = useRef(null);
 
   useEffect(() => {
     startNewGame();
-    const timer = setInterval(() => {
+    startTimer();
+    return () => clearInterval(timer.current); // Clear timer on unmount
+  }, []);
+
+  useEffect(() => {
+    if (isGameOver) {
+      showScoreAlert();
+    }
+  }, [isGameOver]); // Show alert when game is over
+
+  const startTimer = () => {
+    timer.current = setInterval(() => {
       setTimeRemaining(prev => {
         if (prev <= 1) {
-          clearInterval(timer);
+          clearInterval(timer.current);
           setIsGameOver(true);
-          showScoreAlert();
           return 0;
         }
         return prev - 1;
       });
     }, 1000);
-    return () => clearInterval(timer);
-  }, []);
+  };
 
   const startNewGame = () => {
     const shapesToDisplay = getRandomShapes(20); // Display 20 random shapes
     setRandomShapes(shapesToDisplay);
     const randomShapeToCount = shapes[Math.floor(Math.random() * shapes.length)];
     setTargetShape(randomShapeToCount);
-
+    
     const correctCount = shapesToDisplay.filter(shape => shape.name === randomShapeToCount.name).length;
-    const incorrectCount = correctCount + Math.floor(Math.random() * 5) - 2;
+
+    // Generate unique incorrect answer
+    let incorrectCount;
+    do {
+      incorrectCount = correctCount + Math.floor(Math.random() * 5) - 2; // Generate an incorrect answer
+    } while (incorrectCount === correctCount || incorrectCount < 0); // Ensure it's not the same as correct and is non-negative
+
     const allChoices = [correctCount, incorrectCount].sort(() => Math.random() - 0.5);
     setChoices(allChoices);
-
     setSelectedChoice(null);
     setIsCorrect(null);
   };
@@ -70,12 +87,10 @@ const CountPlay = () => {
       const correctCount = randomShapes.filter(shape => shape.name === targetShape.name).length;
       const correctChoice = choice === correctCount;
       setIsCorrect(correctChoice);
-
       if (correctChoice) {
         setScore(score + 1);
-        setTimeRemaining(prev => prev + 5); // Add 5 seconds to the timer for correct answer
+        // Optionally, add 5 seconds to the timer for a correct answer
       }
-
       setTimeout(() => {
         startNewGame(); // Generate a new question after a short delay
       }, 1000); // Delay to show the result
@@ -83,7 +98,22 @@ const CountPlay = () => {
   };
 
   const showScoreAlert = () => {
-    Alert.alert("Time's up!", `Your final score is: ${score}`, [{ text: "OK" }]);
+    Alert.alert(
+      "Time's up!",
+      `Your final score is: ${score}`,
+      [
+        { text: "Try Again", onPress: restartGame },
+        { text: "Exit", onPress: () => navigation.goBack() }
+      ]
+    );
+  };
+
+  const restartGame = () => {
+    setScore(0);
+    setTimeRemaining(30);
+    setIsGameOver(false);
+    startNewGame();
+    startTimer(); // Start the timer again
   };
 
   return (

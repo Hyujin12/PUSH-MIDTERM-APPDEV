@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import React from 'react';
+import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -10,32 +10,27 @@ import AboutUs from './AboutUS'; // Import the About Us component
 // About Screen with buttons for Multiplication, Division, etc.
 const AboutScreen = () => {
   const navigation = useNavigation();
-
   const handleNavigation = (routeName) => {
     navigation.navigate(routeName);
   };
 
   return (
     <LinearGradient colors={['#a8e063', '#56ab2f']} style={styles.container}>
+      <Image source={require('../assets/favicon.png')} style={styles.logo} />
       <View style={styles.header}>
         <Text style={styles.title}>Learn Math Today</Text>
       </View>
-
       {/* Navigation to Play Screen */}
       <TouchableOpacity style={styles.button} onPress={() => handleNavigation("Play")}>
         <Text style={styles.buttonText}>PLAY</Text>
       </TouchableOpacity>
-
       {/* Navigation to About Us Screen */}
       <TouchableOpacity style={styles.button} onPress={() => handleNavigation("AboutUs")}>
         <Text style={styles.buttonText}>ABOUT US</Text>
       </TouchableOpacity>
-
       {/* Navigation to Lessons */}
-      {['LESSONMULTIPLICATION', 'LESSONDIVISION',    'LESSONADDITION', 'LESSONSUBTRACTION', 'LESSONCOUNTING', 'SHAPE'].map((lesson, index) => (
-        <TouchableOpacity 
-          key={index} 
-         >
+      {['LESSONMULTIPLICATION', 'LESSONDIVISION', 'LESSONADDITION', 'LESSONSUBTRACTION', 'LESSONCOUNTING', 'SHAPE'].map((lesson, index) => (
+        <TouchableOpacity key={index} style={styles.button} onPress={() => handleNavigation(lesson)}>
           <Text style={styles.buttonText}>{lesson.replace('LESSON', ' ')}</Text>
         </TouchableOpacity>
       ))}
@@ -46,21 +41,18 @@ const AboutScreen = () => {
 // Lesson Screen with navigation to individual lessons
 const LessonScreen = () => {
   const navigation = useNavigation();
-
   const handleNavigation = (routeName) => {
     navigation.navigate(routeName);
   };
 
   return (
     <LinearGradient colors={['#a8e063', '#56ab2f']} style={styles.container}>
+      <Image source={require('../assets/favicon.png')} style={styles.logo} />
       <View style={styles.header}>
         <Text style={styles.title}>Choose a Lesson</Text>
       </View>
       {['LESSONCOUNTING', 'LESSONSHAPE', 'LESSONADDITION', 'LESSONSUBTRACTION', 'LESSONMULTIPLICATION', 'LESSONDIVISION'].map((lesson, index) => (
-        <TouchableOpacity 
-          key={index} 
-          style={styles.button} 
-          onPress={() => handleNavigation(lesson)}>
+        <TouchableOpacity key={index} style={styles.button} onPress={() => handleNavigation(lesson)}>
           <Text style={styles.buttonText}>{lesson.replace('LESSON', ' ')}</Text>
         </TouchableOpacity>
       ))}
@@ -103,6 +95,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  logo: {
+    width: 100,
+    height: 100,
+    marginBottom: 20,
+    resizeMode: 'contain',
   },
   header: {
     alignItems: 'center',

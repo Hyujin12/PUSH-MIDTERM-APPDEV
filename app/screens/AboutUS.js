@@ -73,6 +73,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
    
+   
   },
   gradient: {
     width: '100%',
@@ -89,6 +90,7 @@ const styles = StyleSheet.create({
     fontSize: 50,
     fontWeight: 'bold',
     marginBottom: 16,
+    paddingTop: 40,
   },
   welcome: {
     fontSize: 20,
@@ -132,7 +134,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#079FE0',
     padding: 16,
-    borderRadius: 2,
+    
     
   },
   subheading: {

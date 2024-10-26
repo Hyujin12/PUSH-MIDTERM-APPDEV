@@ -100,7 +100,7 @@ const LESSONADDITION = () => {
           data={addition}
           renderItem={renderItem}
           keyExtractor={(item) => item.id}
-          numColumns={2} // Keeps two items in a row
+          numColumns={1} // Keeps two items in a row
         />
       </SafeAreaView>
     </LinearGradient>
@@ -118,10 +118,11 @@ const styles = StyleSheet.create({
   outerContainer: {
     flexDirection: 'row', // Aligns items in a row
     alignItems: 'center',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
+    alignSelf: 'center',
     margin: 10,
     padding: 10,
-    width: 180
+    width: 260
    
 
   },
@@ -165,8 +166,8 @@ const styles = StyleSheet.create({
   },
   header: {
     alignItems: 'center',
-    marginBottom: 20,
-    marginTop: 10,
+    marginBottom: 10,
+    marginTop: 40,
   },
   headerTitle: {
     fontWeight: 'bold',

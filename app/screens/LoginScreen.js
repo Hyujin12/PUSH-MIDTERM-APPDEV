@@ -23,7 +23,7 @@ import { useNavigation } from '@react-navigation/native';
                 <Text style={styles.subtitle}>Learn Math Today</Text>
             </View>
             <View style={styles.formContainer}>
-                <Text style={styles.signInText}>Sign In To Your Account</Text>
+                <Text style={styles.signInText}>Log In To Your Account</Text>
                 <View style={styles.inputGroup}>
                     <InputField label="Email Address" placeholder="learnmath221@gmail.com" />
                     <InputField label="Password" placeholder="***************" secureTextEntry={true} />
@@ -31,7 +31,7 @@ import { useNavigation } from '@react-navigation/native';
                 
                 <TouchableOpacity style={styles.Loginbutton}
                 onPress={handleLessons}>
-                    <Text style={styles.LoginbuttonText}>Sign In</Text>
+                    <Text style={styles.LoginbuttonText}>Log In</Text>
                 </TouchableOpacity>
                 <Text style={styles.orText}>OR</Text>
                 

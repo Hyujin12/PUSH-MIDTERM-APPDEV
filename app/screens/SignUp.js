@@ -44,7 +44,7 @@ export default function SignupScree() {
                          marginTop: 20,
                     }}>OR</Text>
                 <TouchableOpacity onPress={handleSignIn}>
-                    <Text style={styles.UnderlineText}>Already have an account?  Sign In</Text>
+                    <Text style={styles.UnderlineText}>Already have an account?  Log In</Text>
                 </TouchableOpacity>
             </View>
         </LinearGradient>
@@ -76,11 +76,10 @@ const styles = StyleSheet.create({
         gap: 20,
     },
     title: {
-        fontSize: 30,
-        fontFamily:'Jura-Regular',
-        color: '#fff',
+       fontSize: 20,
+        color: '#000',
         marginTop: 30,
-     
+        fontFamily:'Jura-Bold',
     },
     logo: {
         height: 70,

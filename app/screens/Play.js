@@ -1,17 +1,17 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 const Play = () => {
   const navigation = useNavigation();
-
   const handleNavigation = (routeName) => {
     navigation.navigate(routeName);
   };
 
   return (
     <LinearGradient colors={['#a8e063', '#56ab2f']} style={styles.container}>
+      <Image source={require('../assets/favicon.png')} style={styles.logo} />
       <View style={styles.header}>
         <Text style={styles.title}>Let's Play</Text>
       </View>
@@ -19,7 +19,8 @@ const Play = () => {
         <TouchableOpacity 
           key={index} 
           style={styles.button} 
-          onPress={() => handleNavigation(lesson)}>
+          onPress={() => handleNavigation(lesson)}
+        >
           <Text style={styles.buttonText}>{lesson.replace('_', ' ')}</Text>
         </TouchableOpacity>
       ))}
@@ -32,6 +33,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  logo: {
+    width: 100,
+    height: 100,
+    marginBottom: 20,
+    resizeMode: 'contain',
   },
   header: {
     alignItems: 'center',

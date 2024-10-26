@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 3,
     elevation: 3,
-    alignItems: 'flex-start', // Center content inside the item container
+    alignItems: 'flex-start',
     justifyContent: 'center',
     borderWidth: 5,
     borderColor: '#000',
@@ -166,6 +166,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    
   },
   imageRow: {
     flexDirection: 'row', // Arrange images in a row
@@ -176,16 +177,13 @@ const styles = StyleSheet.create({
    
   },
   image: {
-    width: 40,
-    height: 40,
+    width: 30,
+    height: 30,
     marginHorizontal: 3,
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
     paddingLeft: 10,
-    
-
-
 
     
   },
