@@ -12,11 +12,11 @@ const GetStarted = () => {
 
   return (
     <LinearGradient colors={['#8BD68E', '#28D039']} style={styles.container}>
-      {/* Header positioned at the upper part of the screen */}
+     
       <View style={styles.headerContainer}>
         <Text style={styles.title}>KUMON nahLEDGE</Text>
         <Image
-          source={require('../assets/favicon.png')} // Ensure the path to your logo is correct
+          source={require('../assets/favicon.png')} 
           style={styles.logo}
         />
       </View>
@@ -47,10 +47,9 @@ const GetStarted = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'flex-start', // Align children vertically from top to bottom
+   
   },
   headerContainer: {
-    justifyContent: 'flex-start', // Align items towards the top of the screen
     alignItems: 'center',
     paddingTop: 40, // Add padding to push content down a bit
   },
@@ -75,8 +74,8 @@ const styles = StyleSheet.create({
     textAlign: 'justify',
   },
   buttonContainer: {
-    position: 'absolute', // Position the button at the bottom
-    bottom: 80, // Adjust the bottom distance as needed
+    position: 'absolute', 
+    bottom: 80, // Position the button at the bottom
     left: 0,
     right: 0,
     alignItems: 'center', // Center the button horizontally

@@ -1,11 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet, SafeAreaView, Image, FlatList, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, Image, FlatList, } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { gradientColors } from '../COLOR/color'; // Import gradient colors for consistency
 
-const { width } = Dimensions.get('window');
-const containerSize = width * 0.4; // Adjust container size dynamically based on screen width
-const imageSize = width * 0.25; // Adjust image size dynamically based on screen width
 
 const shapes = [
   { id: '1', name: 'Circle', image: require('../../assets/shapes/circle.png') },
@@ -69,7 +66,7 @@ const styles = StyleSheet.create({
   itemContainer: {
     width: 145,
     height: 181,
-    backgroundColor: '#8BD68E', // Custom background for the container
+    backgroundColor: '#8BD68E', 
     alignItems: 'center',
     justifyContent: 'center',
     margin: 10,
@@ -80,7 +77,7 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5, // Adds shadow for Android
     borderWidth: 5, // Thickness of the black outline
-    borderColor: '#000', // Black border color
+    borderColor: '#000',
   },
   image: {
     width: 100, // Adjusted size for images

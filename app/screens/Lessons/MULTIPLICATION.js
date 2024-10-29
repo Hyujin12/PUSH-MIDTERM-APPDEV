@@ -102,7 +102,7 @@ const LESSONMULTIPLICATION = () => {
           data={multiplication}
           renderItem={renderItem}
           keyExtractor={(item) => item.id}
-          numColumns={1} // Keeps two items in a row
+          numColumns={1} 
         />
       </SafeAreaView>
     </LinearGradient>
@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
     shadowRadius: 3,
     elevation: 3,
     position: 'relative', // Ensure the container is relatively positioned
-    padding: 5, // Adds padding to ensure text fits well
+    padding: 5, 
   },
   imageContainer: {
     marginRight: 10, // Adds space between the image and text container

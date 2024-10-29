@@ -2,6 +2,7 @@ import { StyleSheet, Text, TextInput, View, TouchableOpacity, Image } from 'reac
 import React from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
+import { gradientColors } from '../screens/COLOR/color';
 
     const LoginScreen =  () => {
         const navigation = useNavigation();
@@ -13,7 +14,7 @@ import { useNavigation } from '@react-navigation/native';
         };
 
     return (
-        <LinearGradient colors={['#8BD68E', '#28D039']} style={styles.container}>
+        <LinearGradient colors={gradientColors} style={styles.container}>
             <View style={styles.headerContainer}>
                 <Text style={styles.title}>KUMON nahLEDGE</Text>
                 <Image
@@ -109,6 +110,7 @@ const styles = StyleSheet.create({
         padding: 10,
         borderRadius: 50,
         backgroundColor: '#fff',
+        paddingLeft:20,
     },
     Loginbutton: {
         backgroundColor: '#000000',

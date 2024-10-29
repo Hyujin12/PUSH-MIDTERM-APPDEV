@@ -100,7 +100,7 @@ const LESSONADDITION = () => {
           data={addition}
           renderItem={renderItem}
           keyExtractor={(item) => item.id}
-          numColumns={1} // Keeps two items in a row
+          numColumns={1}
         />
       </SafeAreaView>
     </LinearGradient>
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   outerContainer: {
-    flexDirection: 'row', // Aligns items in a row
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     alignSelf: 'center',
@@ -139,8 +139,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 3,
     elevation: 3,
-    position: 'relative', // Ensure the container is relatively positioned
-    padding: 5, // Adds padding to ensure text fits well
+    position: 'relative', 
+    padding: 5, 
   },
   imageContainer: {
     marginRight: 10, // Adds space between the image and text container
@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
     marginTop: 5, // Adds margin above the text
   },
   equations: {
-    fontSize: 12, // Adjusted font size to fit the container
+    fontSize: 12, 
     color: '#000',
     textAlign: 'left',
     marginBottom: 10,

@@ -3,6 +3,7 @@ import React from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 import * as Font from 'expo-font';
+import { gradientColors } from '../screens/COLOR/color.js';
 
 export default function SignupScree() {
     const navigation = useNavigation();
@@ -17,11 +18,11 @@ export default function SignupScree() {
     };
 
     return (
-        <LinearGradient colors={['#8BD68E', '#28D039']} style={styles.container}>
+        <LinearGradient colors={gradientColors} style={styles.container}>
             <SafeAreaView style={styles.headerContainer}>
                 <Text style={styles.title}>KUMON nahLEDGE</Text>
                 <Image
-                    source={require('../assets/favicon.png')} // Ensure the path to your logo is correct
+                    source={require('../assets/favicon.png')}
                     style={styles.logo}
                 />
                 <Text style={styles.subtitle}>Learn Math Today</Text>
@@ -30,7 +31,7 @@ export default function SignupScree() {
                 <Text style={styles.signUpText}>Sign Up</Text>
                 <View style={styles.inputGroup}>
                      
-                    <InputField label="Full Name" placeholder="John Doe" />
+                    <InputField label ="Full Name" placeholder="John Doe"  />
                     <InputField label="Email Address" placeholder="learnmath221@gmail.com" />
                     <InputField label="Password" placeholder="***************" secureTextEntry={true} />
                 </View>
@@ -106,6 +107,7 @@ const styles = StyleSheet.create({
         marginTop: 12,
         fontSize: 12,
         marginBottom: 15,
+      
     },
     inputWrapper: {
         gap: 6,
@@ -114,6 +116,7 @@ const styles = StyleSheet.create({
         padding: 10,
         borderRadius: 50,
         backgroundColor: '#fff',
+        paddingLeft: 20,
     },
     button: {
         backgroundColor: '#000000',

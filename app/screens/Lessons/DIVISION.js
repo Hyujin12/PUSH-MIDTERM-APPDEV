@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, SafeAreaView, Image, FlatList } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { gradientColors } from '../COLOR/color';
+import { gradientColors } from '../COLOR/color';// see color.js for colors
 
 const division = [
   { id: '1', number: require('../../assets/fruits/Number/1.png'), name: 'One' },
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
     shadowRadius: 3,
     elevation: 3,
     position: 'relative', // Ensure the container is relatively positioned
-    padding: 5, // Adds padding to ensure text fits well
+    padding: 5, 
   },
   imageContainer: {
     marginRight: 10, // Adds space between the image and text container
@@ -154,10 +154,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     color: '#333',
-    marginTop: 5, // Adds margin above the text
+    marginTop: 5, 
   },
   equations: {
-    fontSize: 12, // Adjusted font size to fit the container
+    fontSize: 12, 
     color: '#000',
     textAlign: 'left',
     marginBottom: 10,

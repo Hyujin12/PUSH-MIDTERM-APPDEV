@@ -1,4 +1,4 @@
-import { Button, StyleSheet, Text, TextInput, View, ScrollView, TouchableOpacity, Image } from 'react-native';
+import {  StyleSheet, Text,  View, ScrollView,  Image } from 'react-native';
 import React from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 
@@ -27,37 +27,37 @@ const AboutUsScreen = () => {
             <Text style={styles.Name}>Cherry Dublin</Text>
             <Text style={styles.Description} >PROJECT MANAGER</Text>
           <Image source={require('../assets/cherry.png')}style={styles.picture}/>
-          <Text>The project manager is responsible for overseeing the successful development and implementation of our projects. With a keen eye for detail and a strong background in project management, they expertly facilitate communication between team members, ensuring that project milestones are met on time and within scope. They play a critical role in organizing tasks, coordinating efforts, and addressing any challenges that arise, all while keeping the team motivated and focused. Their leadership ensures that every aspect of the project progresses smoothly, resulting in high-quality outcomes.</Text>
+          <Text style={styles.text}>As the group's project manager, I keep the group in balance and make sure that decisions are made correctly. I also work on the application's home page and fix any grammar errors. I also support the group when they need it and check that each member is working on their own task. If the programmer needs to make changes in Figma, I also assist them when they need me.</Text>
         </View>
         <View style={styles.collaborator} >
             <Text style={styles.Name}>Albert Jr. Bandol</Text>
             <Text style={styles.Description} >COLOR SCHEME DESIGNER</Text>
           <Image source={require('../assets/Albert.png')}style={styles.picture}/>
-          <Text>This is the person who manages the selection of colors for our projects. He carefully chooses palettes that are both visually appealing and functional, ensuring the design is cohesive and enhances the overall user experience. With his deep understanding of color theory and design principles, he makes sure that the colors not only align with our brand but also create a harmonious and engaging interface. His work is what makes our projects truly stand out!</Text>
+          <Text style={styles.text}>First of all, I implemented Color theory and it's 60-30-10 rules in our project. 60% is for background, 30% for buttons and navigation and finally 10% is for typography. I researched carefully to match our theme with the required color for our project. I use extensions in my search engine called "Color Picker - Eyedropper Tool" to select the color that matches the project and I arrange it in order from light to dark color. In addition to this I am designing the user interface of application games. I refine the designs and elements needed to create a smooth, beautiful and friendly use figma interior.</Text>
           </View>
           <View style={styles.collaborator} >
             <Text style ={styles.Name}>James Carl Amodia</Text>
             <Text style={styles.Description} >TYPOGRAPHY DESIGNER</Text>
           <Image source={require('../assets/james.png')}style={styles.picture}/>
-          <Text>This is the person responsible for designing the lessons in our project. He carefully crafts engaging and educational content that is tailored to meet the needs of our target audience. With a deep understanding of instructional design and pedagogy, he ensures that the lessons are not only informative but also interactive and easy to follow. His work is crucial in creating an enjoyable and effective learning experience, making sure that each lesson is both accessible and impactful for the students. </Text>
+          <Text style={styles.text}>As a typography designer, I worked on selecting fonts and adjusting sizes to enhance readability. I laid out the landing page, organizing elements for a clean and welcoming first impression. Additionally, I managed the spacing to ensure all components are evenly placed for easy reading. I also designed sections to include interactive elements, incorporating arithmetic operations like addition and division to improve the user interface.</Text>
           </View>
           <View style={styles.collaborator} >
             <Text style={styles.Name}>Daniel Atolle</Text>
             <Text style={styles.Description} >OBJECT DESIGNER</Text>
           <Image source={require('../assets/daniel.png')}style={styles.picture}/>
-          <Text>This is the person responsible for designing the lessons in our project. He carefully crafts engaging and educational content that is tailored to meet the needs of our target audience. With a deep understanding of instructional design and pedagogy, he ensures that the lessons are not only informative but also interactive and easy to follow. His work is crucial in creating an enjoyable and effective learning experience, making sure that each lesson is both accessible and impactful for the students. </Text>
+          <Text style={styles.text}>The theme and other elements are created by me as an object designer to make our application more visually appealing. I also design and enter the numbers in Figma.</Text>
           </View>
           <View style={styles.collaborator} >
             <Text style={styles.Name}>John Paul Faderog</Text>
             <Text style={styles.Description} >DEVELOPER</Text>
           <Image source={require('../assets/johnpaul.png')}style={styles.picture}/>
-          <Text>This is the person responsible for designing the lessons in our project. He carefully crafts engaging and educational content that is tailored to meet the needs of our target audience. With a deep understanding of instructional design and pedagogy, he ensures that the lessons are not only informative but also interactive and easy to follow. His work is crucial in creating an enjoyable and effective learning experience, making sure that each lesson is both accessible and impactful for the students. </Text>
+          <Text style={styles.text}>I made interactive games for kids that they can play and answer using the knowledge they've gained from the courses. I also assisted the developer in making the application.</Text>
           </View>
           <View style={styles.collaborator} >
             <Text style={styles.Name}>Eugene Dianito</Text>
             <Text style={styles.Description} >OVERALL DESIGN, PLANNING, & DEVELOPER</Text>
           <Image source={require('../assets/eugene.png')}style={styles.picture}/>
-          <Text>This is the person responsible for designing the lessons in our project. He carefully crafts engaging and educational content that is tailored to meet the needs of our target audience. With a deep understanding of instructional design and pedagogy, he ensures that the lessons are not only informative but also interactive and easy to follow. His work is crucial in creating an enjoyable and effective learning experience, making sure that each lesson is both accessible and impactful for the students. </Text>
+          <Text style={styles.text}>I am the programmer of this application, the creator of the math courses for children, the manager and supervisor of the layout design in Figma, and I assist other member in Figma</Text>
           </View>
           
 
@@ -136,6 +136,8 @@ const styles = StyleSheet.create({
     padding: 16,
     
     
+    
+    
   },
   subheading: {
     fontSize: 20,
@@ -151,7 +153,14 @@ const styles = StyleSheet.create({
         borderColor: '#000',
         paddingHorizontal: 10,
        
-  }
+  },
+  text: {
+    fontSize: 16,
+    textAlign: 'center',
+    marginBottom: 16,
+    textAlign: 'justify',
+    marginHorizontal: 36.5
+  },
 });
 
 export default AboutUsScreen;

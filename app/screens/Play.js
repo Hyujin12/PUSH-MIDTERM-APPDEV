@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { gradientColors } from '../screens/COLOR/color';
 
 const Play = () => {
   const navigation = useNavigation();
@@ -10,7 +11,7 @@ const Play = () => {
   };
 
   return (
-    <LinearGradient colors={['#a8e063', '#56ab2f']} style={styles.container}>
+    <LinearGradient colors={gradientColors} style={styles.container}>
       <Image source={require('../assets/favicon.png')} style={styles.logo} />
       <View style={styles.header}>
         <Text style={styles.title}>Let's Play</Text>
@@ -52,7 +53,7 @@ const styles = StyleSheet.create({
     width: 200,
     padding: 15,
     borderRadius: 25,
-    backgroundColor: '#dcdcdc',
+    backgroundColor: '#C9E91E',
     alignItems: 'center',
     marginVertical: 10,
   },
