@@ -16,7 +16,7 @@ const Play = () => {
       <View style={styles.header}>
         <Text style={styles.title}>Let's Play</Text>
       </View>
-      {['COUNT', 'SHAPE', 'ADDITION', 'SUBTRACTION', 'MULTIPLICATION', 'DIVISION'].map((lesson, index) => (
+      {['COUNTING', 'SHAPE', 'ADDITION', 'SUBTRACTION', 'MULTIPLICATION', 'DIVISION'].map((lesson, index) => (
         <TouchableOpacity 
           key={index} 
           style={styles.button} 

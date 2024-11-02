@@ -62,7 +62,7 @@ const App = () => {
         <Stack.Screen name="LESSONDIVISION" component={LessonDivision} />
         <Stack.Screen name="LESSONMULTIPLICATION" component={LessonMultiplication} />
         <Stack.Screen name="SHAPE" component={ShapePlay} />
-        <Stack.Screen name="COUNT" component={CountPlay} />
+        <Stack.Screen name="COUNTING" component={CountPlay} />
       </Stack.Navigator>
     </NavigationContainer>
   );
